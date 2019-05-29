@@ -39,8 +39,6 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public AppUser updateUser(AppUser user) {
-		System.out.println("In updateUser Dao method.");
-		System.out.println(user);
 		sessionFactory.getCurrentSession().update(user);
 		return user;
 	}
@@ -53,17 +51,13 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	
-	public boolean isValidLogin(Login login)
+	public AppUser isValidLogin(Login login)
 	{
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AppUser.class);
 		criteria.add(Restrictions.eq("username", login.getUsername()));
 		criteria.add(Restrictions.eq("password", login.getPassword()));
-		AppUser userEntity = (AppUser) criteria.uniqueResult();
-		if(userEntity == null)
-		{
-			return false;
-		}
-		return true; 
+		AppUser appUser = (AppUser) criteria.uniqueResult();
+		return appUser;
 	}
 
 }

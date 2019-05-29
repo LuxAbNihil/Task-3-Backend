@@ -11,5 +11,5 @@ public interface UserDao {
 	AppUser findUserByUsername(String username);
 	AppUser updateUser(AppUser user);
 	List<AppUser> getAllUsers();
-	boolean isValidLogin(Login login);
+	AppUser isValidLogin(Login login);
 }

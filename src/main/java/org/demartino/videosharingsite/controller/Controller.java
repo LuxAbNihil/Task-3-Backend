@@ -2,6 +2,7 @@ package org.demartino.videosharingsite.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.demartino.videosharingsite.service.LoginService;
 import org.demartino.videosharingsite.service.UploadService;
 import org.demartino.videosharingsite.service.UserService;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value="/user/")
 public class Controller {
 	
 	@Autowired
@@ -30,11 +32,13 @@ public class Controller {
 	@Autowired
 	private UploadService uploadService;
 	
+	private final static Logger logger = Logger.getLogger(Controller.class);
+	
 	/**
 	 * Grabs a list of all users
 	 * @return A ResponseEntity<List<User>> where the list lists all users.
 	 */
-	@RequestMapping(value="/getAllUsers/", method=RequestMethod.GET)
+	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ResponseEntity<List<User>> getAllUsers() {
 		List<User> users = userService.getAllUsers();
 		if(users.isEmpty()) {
@@ -48,14 +52,12 @@ public class Controller {
 	 * @param user : A user object that contains the data for the creation of the entity
 	 * @return A responseEntity<User> where User is the a view model representation of the persisted entity.  
 	 */
-	@RequestMapping(value="/addUser/", method=RequestMethod.POST) 
+	@RequestMapping(value="/", method=RequestMethod.POST) 
 	public ResponseEntity<User> createUser(@RequestBody User user) {
-		System.out.println("*****************");
 		User returnedUser = userService.createUser(user);
 		if(returnedUser == null)
 		{
-			User voidUser = new User();
-			return new ResponseEntity<User>(voidUser, HttpStatus.ACCEPTED); //Accepted thrown because processing has not been completed since an entity already exists
+			return new ResponseEntity<User>(returnedUser, HttpStatus.ACCEPTED); //Accepted thrown because processing has not been completed since an entity already exists
 		}
 		return new ResponseEntity<User>(returnedUser, HttpStatus.CREATED);
 	}
@@ -66,11 +68,14 @@ public class Controller {
 	 * @param username : The username of the account being updated
 	 * @return A ResponseEntity<User> where the User is the updated users. 
 	 */
-	@RequestMapping(value="/updateUser/{username}", method=RequestMethod.PUT) 
+	@RequestMapping(value="/{username}", method=RequestMethod.PUT) 
 	public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable("username") String username) {
-		System.out.println("In updateUser Controller method.");
-		User returnedUser = userService.updateUser(user, username);
-		return new ResponseEntity<User>(returnedUser, HttpStatus.OK);
+		User returnedUser = userService.updateUser(user); 
+		if(returnedUser == null)
+		{
+			return new ResponseEntity<User>(returnedUser, HttpStatus.ACCEPTED);
+		}
+		return new ResponseEntity<User>(returnedUser, HttpStatus.OK); 
 	}
 	
 	/**
@@ -78,7 +83,7 @@ public class Controller {
 	 * @param username : The username of the account to be deleted
 	 * @return A ResponseEntity<Boolean> where the boolean indicates whether or not the resource was successfully delted. 
 	 */
-	@RequestMapping(value="/deleteUser/{username}", method=RequestMethod.DELETE)
+	@RequestMapping(value="/{username}", method=RequestMethod.DELETE) //make urls rest compliant (/user/{username} for example)
 	public ResponseEntity<Boolean> deleteUser(@PathVariable("username") String username) {
 		boolean isUserDeleted = userService.deleteUserByUsername(username);
 		return new ResponseEntity<Boolean>(isUserDeleted, HttpStatus.OK);
@@ -89,7 +94,7 @@ public class Controller {
 	 * @param login : A login object containing the username and password of the user logging on.
 	 * @return A ResponsEntity<Boolean> where the boolean indicates whether the login was successful or not. 
 	 */
-	@RequestMapping(value="/loginSubmit/", method=RequestMethod.POST)
+	@RequestMapping(value="/login/", method=RequestMethod.POST)
 	public ResponseEntity<UserAndVideoListContainer> login(@RequestBody Login login) {
 		UserAndVideoListContainer isValidLogon = loginService.login(login);
 		return new ResponseEntity<UserAndVideoListContainer>(isValidLogon, HttpStatus.OK);
@@ -100,34 +105,13 @@ public class Controller {
 	 * @param username : The username of the user to be retrieved
 	 * @return A ResponseEntity<User> where the User is the user retrieved using the given username
 	 */
-	@RequestMapping(value="/getUserByUsername/{username}", method=RequestMethod.GET)
+	@RequestMapping(value="/{username}", method=RequestMethod.GET)
 	public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) {
 		User userToBeReturned = userService.findUserByUsername(username);
+		if(userToBeReturned == null) 
+		{
+			return new ResponseEntity<User>(userToBeReturned, HttpStatus.ACCEPTED);
+		}
 		return new ResponseEntity<User>(userToBeReturned, HttpStatus.OK); 
 	}
-	
-	////The following methods are for video uploads/////
-	/**
-	 * Uploads a video to the file system and creates a path field to that file in the database. (Will in final form, not completely implemented yet.)
-	 * @param upload : Contains the upload information for the video
-	 * @param username : The username of the account uploading the video
-	 * @return A ResponseEntity<Upload> where the Upload is the video that was added to the file system and database.
-	 */
-	@RequestMapping(value="upload/{username}", method=RequestMethod.POST)
-	public ResponseEntity<Upload> uploadVideo(@RequestBody Upload upload, @PathVariable("username") String username) {
-		Upload uploadToBeReturned = uploadService.createVideo(upload, username);
-		return new ResponseEntity<Upload>(uploadToBeReturned, HttpStatus.OK);
-	}
-	
-	/**
-	 * Edits a video identified by username
-	 * @param upload : The video to be updated
-	 * @param username : The username of the account the video belongs to. 
-	 * @return A ResponseEntity<Upload> where the Upload is the video that was edited. 
-	 */
-	@RequestMapping(value="/editVideo/{username}", method=RequestMethod.PUT)
-	public ResponseEntity<Upload> editVideo(@RequestBody Upload upload, @PathVariable("username") String username) {
-		Upload uploadToBeReturned = uploadService.updateVideo(upload);
-		return new ResponseEntity<Upload>(uploadToBeReturned, HttpStatus.OK);
-	}
-}
+}	

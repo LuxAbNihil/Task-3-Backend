@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="18" passed="18">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="561" started-at="2019-05-29T14:47:05Z" finished-at="2019-05-29T14:47:05Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="561" started-at="2019-05-29T14:47:05Z" finished-at="2019-05-29T14:47:05Z">
+      <class name="videosharebe.UserServiceTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="setUp" is-config="true" duration-ms="20" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="305" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="doesUserExistDoesntFindAUser()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="doesUserExistDoesntFindAUser" duration-ms="38" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doesUserExistDoesntFindAUser -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="3" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="doesUserExistFindsAUser()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="doesUserExistFindsAUser" duration-ms="3" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doesUserExistFindsAUser -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="doesUserExistIsPassedANullUsernameAndReturnsTrue()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="doesUserExistIsPassedANullUsernameAndReturnsTrue" duration-ms="3" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doesUserExistIsPassedANullUsernameAndReturnsTrue -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="4" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="serviceLayerCreatesNewUserReturnsNewUser()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="serviceLayerCreatesNewUserReturnsNewUser" duration-ms="17" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceLayerCreatesNewUserReturnsNewUser -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="4" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="serviceLayerDeletesUserReturnsBoolean()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="serviceLayerDeletesUserReturnsBoolean" duration-ms="3" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceLayerDeletesUserReturnsBoolean -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="serviceLayerFailsToCreateUserBecauseUserIsNull()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="serviceLayerFailsToCreateUserBecauseUserIsNull" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceLayerFailsToCreateUserBecauseUserIsNull -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="serviceLayerFailsToDeleteUserBecauseUsernameIsNull()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="serviceLayerFailsToDeleteUserBecauseUsernameIsNull" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceLayerFailsToDeleteUserBecauseUsernameIsNull -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="5" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="serviceLayerFailsToUpdateUserBecauseUserDoesntExist()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="serviceLayerFailsToUpdateUserBecauseUserDoesntExist" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceLayerFailsToUpdateUserBecauseUserDoesntExist -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="3" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="serviceLayerFailsToUpdateUserBecauseUserIsNull()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="serviceLayerFailsToUpdateUserBecauseUserIsNull" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceLayerFailsToUpdateUserBecauseUserIsNull -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="9" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="serviceLayerUpdatesUser()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="serviceLayerUpdatesUser" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceLayerUpdatesUser -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="4" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="testGetAllUsers()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="testGetAllUsers" duration-ms="3" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetAllUsers -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="4" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="userFailsToFindUserByUsernameBecauseUserDoesntExist()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="userFailsToFindUserByUsernameBecauseUserDoesntExist" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userFailsToFindUserByUsernameBecauseUserDoesntExist -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="4" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="userFailsToFindUserByUsernameBecauseUsernameIsNull()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="userFailsToFindUserByUsernameBecauseUsernameIsNull" duration-ms="3" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userFailsToFindUserByUsernameBecauseUsernameIsNull -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="userFailsToLoginBecauseLoginObjectIsNull()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="userFailsToLoginBecauseLoginObjectIsNull" duration-ms="1" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userFailsToLoginBecauseLoginObjectIsNull -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="3" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="userFailsToLoginDueToInvalidCredentials()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="userFailsToLoginDueToInvalidCredentials" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userFailsToLoginDueToInvalidCredentials -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="userFindsUserByUsername()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="userFindsUserByUsername" duration-ms="2" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userFindsUserByUsername -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="1" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="userNotCreatedBecauseItAlreadyExists()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="userNotCreatedBecauseItAlreadyExists" duration-ms="1" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userNotCreatedBecauseItAlreadyExists -->
+        <test-method status="PASS" signature="intializer()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="intializer" is-config="true" duration-ms="5" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intializer -->
+        <test-method status="PASS" signature="userSuccessfullyLogsIn()[pri:0, instance:videosharebe.UserServiceTest@11a00961]" name="userSuccessfullyLogsIn" duration-ms="3" started-at="2019-05-29T09:47:05Z" finished-at="2019-05-29T09:47:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userSuccessfullyLogsIn -->
+      </class> <!-- videosharebe.UserServiceTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

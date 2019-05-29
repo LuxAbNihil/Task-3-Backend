@@ -8,7 +8,7 @@ public interface UserService {
 	User createUser(User user);
 	boolean deleteUserByUsername(String username);
 	User findUserByUsername(String username);
-	User updateUser(User user, String username);
+	User updateUser(User user);
 	List<User> getAllUsers();
 
 }

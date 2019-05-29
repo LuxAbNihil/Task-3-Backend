@@ -36,7 +36,7 @@ public class AppUser {
 	@Column(name="age")
 	private Short age;
 	
-	@OneToMany(mappedBy="id", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="userEntity", fetch=FetchType.LAZY)
 	private Set<UploadedVideo> videos; //TODO use two calls instead of join
 	
 	public AppUser() {};

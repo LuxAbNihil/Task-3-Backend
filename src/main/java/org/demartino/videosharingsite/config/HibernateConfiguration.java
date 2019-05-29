@@ -19,11 +19,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  
 
 
-@Configuration
+@Configuration 
 @EnableTransactionManagement
 @PropertySource(value= {"classpath:application.properties"})
 @ComponentScan(basePackages="org.demartino.videosharingsite")
-@EnableWebMvc
 public class HibernateConfiguration {
 
 	@Autowired
@@ -39,7 +38,7 @@ public class HibernateConfiguration {
 		return sessionFactory;
 	}
 	
-	private DataSource dataSource() //TODO make this a bean
+	private DataSource dataSource()
 	{
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));

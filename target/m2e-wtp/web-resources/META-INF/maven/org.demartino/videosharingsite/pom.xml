@@ -23,11 +23,12 @@
 	</properties>
 
 	<dependencies>
+		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
-		</dependency>
+		</dependency> <!-- Just Spring Web not MVC -->
 		<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
@@ -40,6 +41,7 @@
 			<version>2.4</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- File Uploads -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
@@ -51,11 +53,13 @@
 			<artifactId>commons-io</artifactId>
 			<version>1.3.2</version>
 		</dependency>
+		<!-- Over the wire transfer -->
 		<dependency>
     		<groupId>com.fasterxml.jackson.core</groupId>
     		<artifactId>jackson-databind</artifactId>
     		<version>2.9.8</version>
 		</dependency>
+		<!-- Database -->
          <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -66,6 +70,25 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector.version}</version>
         </dependency>
+        <!-- Testing -->
+        <dependency>
+    		<groupId>org.mockito</groupId>
+    		<artifactId>mockito-all</artifactId>
+   			<version>1.9.5</version>
+   			<scope>test</scope>
+		</dependency>
+		<dependency>
+  			<groupId>org.testng</groupId>
+  			<artifactId>testng</artifactId>
+ 			<version>6.8</version>
+  			<scope>test</scope>
+		</dependency>
+		<!-- Logging -->
+        <dependency>
+    		<groupId>log4j</groupId>
+    		<artifactId>log4j</artifactId>
+    		<version>1.2.17</version>
+		</dependency>
 	</dependencies>
 
 	<build>
