@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="videosharebe.UserServiceTest">
+      <class name="videosharebe.SeleniumTest">
         <methods>
-          <include name="setUp"/>
-          <include name="doesUserExistIsPassedANullUsernameAndReturnsTrue"/>
-          <include name="intializer"/>
+          <include name="cleanUp"/>
+          <include name="userCanBeDeleted"/>
+          <include name="initializer"/>
         </methods>
-      </class> <!-- videosharebe.UserServiceTest -->
+      </class> <!-- videosharebe.SeleniumTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -54,6 +54,6 @@ public class LoginServiceImpl implements LoginService {
 		videos = uploadService.getAllVideosForUser(login.getUsername());
 		userAndVideoListContainer.setUsers(users);
 		userAndVideoListContainer.setVideos(videos);
-		return userAndVideoListContainer;
+		return userAndVideoListContainer; 
 	}	
 }

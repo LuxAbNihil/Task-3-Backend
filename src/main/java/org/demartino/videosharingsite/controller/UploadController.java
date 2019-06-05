@@ -1,5 +1,6 @@
 package org.demartino.videosharingsite.controller;
 
+import org.demartino.videosharingsite.remote.UploadRemote;
 import org.demartino.videosharingsite.service.UploadService;
 import org.demartino.videosharingsite.view.Upload;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,9 @@ public class UploadController {
 	 */
 
 	@RequestMapping(value="/{username}", method=RequestMethod.POST)
-	public ResponseEntity<Upload> uploadVideo(@RequestBody Upload upload, @PathVariable("username") String username) {
-		Upload uploadToBeReturned = uploadService.createVideo(upload, username);
-		return new ResponseEntity<Upload>(uploadToBeReturned, HttpStatus.OK);
+	public ResponseEntity<UploadRemote> uploadVideo(@RequestBody UploadRemote uploadRemote, @PathVariable("username") String username) {
+		UploadRemote uploadToBeReturned = uploadService.createVideo(uploadRemote, username);
+		return new ResponseEntity<UploadRemote>(uploadToBeReturned, HttpStatus.OK);
 	}
 	
 	/**
@@ -38,8 +39,8 @@ public class UploadController {
 	 * @return A ResponseEntity<Upload> where the Upload is the video that was edited. 
 	 */
 	@RequestMapping(value="/{username}", method=RequestMethod.PUT)
-	public ResponseEntity<Upload> editVideo(@RequestBody Upload upload, @PathVariable("username") String username) {
-		Upload uploadToBeReturned = uploadService.updateVideo(upload);
-		return new ResponseEntity<Upload>(uploadToBeReturned, HttpStatus.OK);
+	public ResponseEntity<UploadRemote> editVideo(@RequestBody UploadRemote uploadRemote, @PathVariable("username") String username) {
+		UploadRemote uploadToBeReturned = uploadService.updateVideo(uploadRemote);
+		return new ResponseEntity<UploadRemote>(uploadToBeReturned, HttpStatus.OK);
 	}
 }

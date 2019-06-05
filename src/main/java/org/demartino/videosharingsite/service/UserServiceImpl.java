@@ -62,12 +62,13 @@ public class UserServiceImpl implements UserService {
 		if(user == null) {
 			return null;
 		}
-		boolean userDoesntExist = doesUserExist(user.getUsername());
-		if(userDoesntExist)
+		AppUser appUser = userDao.findUserByUsername(user.getUsername());
+		if(appUser == null)
 		{
 			return null;
 		}
-		AppUser appUser = new AppUser(user);
+	    appUser = appUser.convert(user);
+		appUser = userDao.updateUser(appUser);
 		User returnedUser = new User(appUser);
 		return returnedUser;
 	}
@@ -83,16 +84,5 @@ public class UserServiceImpl implements UserService {
 			users.add(user);
 		}
 		return users;
-	}
-	
-	//returns true if the user doesn't exist and returns false if the user does exist
-	public boolean doesUserExist(String username)
-	{
-		if(username == null)
-		{
-			return true;
-		}
-		AppUser appUser = userDao.findUserByUsername(username);
-		return appUser == null;
 	}
 }

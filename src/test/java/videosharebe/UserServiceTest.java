@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.demartino.videosharingsite.dao.UserDao;
+import org.demartino.videosharingsite.dao.VideoDao;
 import org.demartino.videosharingsite.entity.AppUser;
 import org.demartino.videosharingsite.service.LoginServiceImpl;
-import org.demartino.videosharingsite.service.UploadService;
-import org.demartino.videosharingsite.service.UserService;
+import org.demartino.videosharingsite.service.UploadServiceImpl;
 import org.demartino.videosharingsite.service.UserServiceImpl;
-import org.demartino.videosharingsite.view.Login;
-import org.demartino.videosharingsite.view.Upload;
 import org.demartino.videosharingsite.view.User;
-import org.demartino.videosharingsite.view.UserAndVideoListContainer;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -28,15 +25,11 @@ public class UserServiceTest {
 
 	@Mock
 	private UserDao mockDao;
-	@Mock
-	private UserService userService;
-	@Mock
-	private UploadService uploadService;
 	
 	@InjectMocks
 	private UserServiceImpl userServiceImpl;
 	
-	@InjectMocks
+	@InjectMocks //should be in its own class
 	private LoginServiceImpl loginServiceImpl;
 	
 	private static final Logger logger = Logger.getLogger(UserServiceTest.class);
@@ -45,10 +38,7 @@ public class UserServiceTest {
 	 private User updatedUser;
 	 private AppUser appUser;
 	 private AppUser updatedAppUser;
-	 private Login login;
-	 private UserAndVideoListContainer userAndVideoListContainer;
 	 private List<User> users;
-	 private List<Upload> uploads;
 	 private List<AppUser> appUsers;
 	
 	 
@@ -69,7 +59,7 @@ public class UserServiceTest {
 		user.setUsername("Pantolimon");
 		user.setPassword("Pantolimon");
 		user.setEmail("pant@oxford.edu");
-		user.setId(123L);
+		user.setId(123L); 
 		
 		appUser = new AppUser(user);
 		
@@ -93,16 +83,6 @@ public class UserServiceTest {
 		updatedAppUser.setEmail("George@Yale.edu");
 		updatedAppUser.setId(123L);
 		
-		
-		//updatedAppUser = new AppUser(updatedUser);
-		
-		login = new Login();
-		
-		login.setUsername("Lyra");
-		login.setPassword("password");
-		
-		userAndVideoListContainer = new UserAndVideoListContainer();
-		
 		users = new ArrayList<User>();
 		users.add(user);
 		users.add(updatedUser);
@@ -110,8 +90,6 @@ public class UserServiceTest {
 		appUsers = new ArrayList<AppUser>();
 		appUsers.add(appUser);
 		appUsers.add(updatedAppUser);
-		
-		uploads = new ArrayList<Upload>();
 	}
 	
 	//Test Create User Service Layer Method
@@ -121,8 +99,7 @@ public class UserServiceTest {
 		 Mockito.when(mockDao.findUserByUsername(appUser.getUsername())).thenReturn(null);
 		 Mockito.when(mockDao.createUser(Mockito.any(AppUser.class))).thenReturn(appUser);
 		 User userToBeTested = userServiceImpl.createUser(user);
-		 userToBeTested.setPassword(user.getPassword());
-		 Assert.assertTrue(new ReflectionEquals(user).matches(userToBeTested)); 
+		 Assert.assertTrue(new ReflectionEquals(user, "password").matches(userToBeTested)); 
 	}
 	
 	@Test
@@ -164,40 +141,15 @@ public class UserServiceTest {
 
 	@Test 
 	public void serviceLayerFailsToUpdateUserBecauseUserDoesntExist() {
-		Mockito.when(mockDao.updateUser(Mockito.any(AppUser.class))).thenReturn(null); //what does this warning mean?
+		Mockito.when(mockDao.findUserByUsername(updatedUser.getUsername())).thenReturn(null); 
 		User userToBeTested = userServiceImpl.updateUser(updatedUser);
-		Assert.assertEquals(userToBeTested, null);
+		Assert.assertNull(userToBeTested);
 	}
 	
 	@Test 
 	public void serviceLayerFailsToUpdateUserBecauseUserIsNull() {
 		User userToBeTested = userServiceImpl.updateUser(null);
 		Assert.assertEquals(userToBeTested, null);
-	}
-	
-	//Test Login 
-	@Test(priority = 1)
-	public void userSuccessfullyLogsIn() {
-		Mockito.when(mockDao.isValidLogin(login)).thenReturn(appUser);
-		Mockito.when(userService.getAllUsers()).thenReturn(users);
-		Mockito.when(uploadService.getAllVideosForUser(login.getUsername())).thenReturn(uploads);
-		userAndVideoListContainer = loginServiceImpl.login(login);
-		List<User> listOfUsers = userAndVideoListContainer.getUsers();
-		Assert.assertTrue(listOfUsers.size() > 0);
-	}
-	
-	@Test 
-	public void userFailsToLoginDueToInvalidCredentials() {
-		Mockito.when(mockDao.isValidLogin(login)).thenReturn(null);
-		userAndVideoListContainer = loginServiceImpl.login(login);
-		List<User> listOfUsers = userAndVideoListContainer.getUsers();
-		Assert.assertTrue(listOfUsers.size() == 0);
-	}
-	
-	@Test 
-	public void userFailsToLoginBecauseLoginObjectIsNull() {
-		userAndVideoListContainer = loginServiceImpl.login(null);
-		Assert.assertNull(userAndVideoListContainer);
 	}
 	
 	//Test findUserByUsername
@@ -222,29 +174,16 @@ public class UserServiceTest {
 		Assert.assertNull(user);
 	}
 	
-	//Test doesUserExist
-	@Test
-	public void doesUserExistFindsAUser() {
-		Mockito.when(mockDao.findUserByUsername(user.getUsername())).thenReturn(appUser);
-		Assert.assertFalse(userServiceImpl.doesUserExist(user.getUsername()));
-	}
-	
-	@Test
-	public void doesUserExistDoesntFindAUser() {
-		Mockito.when(mockDao.findUserByUsername(user.getUsername())).thenReturn(null);
-		Assert.assertTrue(userServiceImpl.doesUserExist(user.getUsername()));
-	}
-	
-	@Test
-	public void doesUserExistIsPassedANullUsernameAndReturnsTrue() {
-		Assert.assertTrue(userServiceImpl.doesUserExist(null));
-	}
-	
-	//Test getAllUsers
+	/**
+	 * Test getAllUsers Method.
+	 */
 	@Test
 	public void testGetAllUsers() {
 		Mockito.when(mockDao.getAllUsers()).thenReturn(appUsers);
-		List<User> user = userServiceImpl.getAllUsers();
-		Assert.assertTrue(user.size() > 0);
+		List<User> userList = userServiceImpl.getAllUsers();
+		User userToBeTested = userList.get(0);
+		System.out.println("User To Be Tested: " + userToBeTested);
+		Assert.assertTrue(userList.size() > 0);
+		Assert.assertTrue(new ReflectionEquals(userToBeTested).matches(user));
 	}
 }

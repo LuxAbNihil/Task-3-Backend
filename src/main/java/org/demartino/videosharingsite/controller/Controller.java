@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="/user/")
+@RequestMapping(value="/user/") //might not need first slash
 public class Controller {
 	
 	@Autowired
@@ -57,7 +57,7 @@ public class Controller {
 		User returnedUser = userService.createUser(user);
 		if(returnedUser == null)
 		{
-			return new ResponseEntity<User>(returnedUser, HttpStatus.ACCEPTED); //Accepted thrown because processing has not been completed since an entity already exists
+			return new ResponseEntity<User>(returnedUser, HttpStatus.INTERNAL_SERVER_ERROR); //Accepted thrown because processing has not been completed since an entity already exists
 		}
 		return new ResponseEntity<User>(returnedUser, HttpStatus.CREATED);
 	}
@@ -73,7 +73,7 @@ public class Controller {
 		User returnedUser = userService.updateUser(user); 
 		if(returnedUser == null)
 		{
-			return new ResponseEntity<User>(returnedUser, HttpStatus.ACCEPTED);
+			return new ResponseEntity<User>(returnedUser, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<User>(returnedUser, HttpStatus.OK); 
 	}
@@ -94,7 +94,7 @@ public class Controller {
 	 * @param login : A login object containing the username and password of the user logging on.
 	 * @return A ResponsEntity<Boolean> where the boolean indicates whether the login was successful or not. 
 	 */
-	@RequestMapping(value="/login/", method=RequestMethod.POST)
+	@RequestMapping(value="login/", method=RequestMethod.POST)
 	public ResponseEntity<UserAndVideoListContainer> login(@RequestBody Login login) {
 		UserAndVideoListContainer isValidLogon = loginService.login(login);
 		return new ResponseEntity<UserAndVideoListContainer>(isValidLogon, HttpStatus.OK);
@@ -110,7 +110,7 @@ public class Controller {
 		User userToBeReturned = userService.findUserByUsername(username);
 		if(userToBeReturned == null) 
 		{
-			return new ResponseEntity<User>(userToBeReturned, HttpStatus.ACCEPTED);
+			return new ResponseEntity<User>(userToBeReturned, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<User>(userToBeReturned, HttpStatus.OK); 
 	}

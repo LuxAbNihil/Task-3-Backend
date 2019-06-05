@@ -4,7 +4,7 @@
 <suite name="Suite1">
 	<test name = UserServiceTest>
 		<classes>
-			<class name="UserServiceTest" />
+			<class name="UserServiceTest"/>
 		</classes>
 	</test>
 </suite>

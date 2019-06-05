@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.demartino.videosharingsite.dao.VideoDao;
 import org.demartino.videosharingsite.entity.UploadedVideo;
+import org.demartino.videosharingsite.remote.UploadRemote;
 import org.demartino.videosharingsite.view.Upload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,34 +18,53 @@ public class UploadServiceImpl implements UploadService{
 	@Autowired
 	private VideoDao videoDao;
 	
-	public Upload createVideo(Upload upload, String username) {
+	public UploadRemote createVideo(UploadRemote uploadRemote, String username) {
 		//Upload Entity constructor grabs file path 
-		UploadedVideo uploadedVideo = new UploadedVideo(upload);
+		if(uploadRemote == null || videoDao.findVideoByTitle(uploadRemote.getTitle()) != null)
+		{
+			return null; //need to modify logic so videos can have same title if uploaded by different users
+		}
+		UploadedVideo uploadedVideo = new UploadedVideo(uploadRemote);
 		UploadedVideo returnedUploadedVideo = videoDao.createVideo(uploadedVideo);
-		Upload uploadToBeReturned = new Upload(returnedUploadedVideo);
-		//Add logic to grab file from path
+		UploadRemote uploadToBeReturned = new UploadRemote(returnedUploadedVideo);
 		return uploadToBeReturned;
 	}
 
 	
 	public boolean deleteVideoById(Long id) {
+		if(id == null)
+		{
+			return false;
+		}
 		boolean success = videoDao.deleteVideoById(id);
 		return success;
 	}
 
 	
-	public Upload findVideoByTitle(String title) {
+	public UploadRemote findVideoByTitle(String title) {
+		if(title == null) {
+			return null;
+		}
 		UploadedVideo returnedUploadedVideo = videoDao.findVideoByTitle(title);
-		Upload uploadToBeReturned = new Upload(returnedUploadedVideo);
-		//add logic to get video from path
+		if(returnedUploadedVideo == null) {
+			return null;
+		}
+		UploadRemote uploadToBeReturned = new UploadRemote(returnedUploadedVideo);
 		return uploadToBeReturned;
 	}
 
 
-	public Upload updateVideo(Upload upload) {
-		UploadedVideo uploadedVideo = new UploadedVideo(upload);
+	public UploadRemote updateVideo(UploadRemote uploadRemote) {
+		if(uploadRemote == null) {
+			return null;
+		}
+		UploadedVideo uploadedVideo = videoDao.findVideoByTitle(uploadRemote.getTitle());
+		if(uploadedVideo == null)
+		{
+			return null;
+		}
 		UploadedVideo returnedUploadedVideo = videoDao.updateVideo(uploadedVideo);
-		Upload uploadToBeReturned = new Upload(returnedUploadedVideo);	
+		UploadRemote uploadToBeReturned = new UploadRemote(returnedUploadedVideo);	
 		return uploadToBeReturned;
 	}
 	

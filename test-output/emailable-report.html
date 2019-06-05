@@ -31,48 +31,22 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing="0" cellpadding="0" class="result">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">18</td><td class="numi">18</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0.6 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">5</td><td class="numi">5</td><td class="numi">0</td><td class="numi">0</td><td class="numi">10.1 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="passed" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
 <tr><th colspan="4">Default test &#8212; passed</th></tr>
-<tr class="passedodd"><td rowspan="18">videosharebe.UserServiceTest</td><td><a href="#m1"><b>doesUserExistDoesntFindAUser</b>  </a></td><td class="numi">1</td><td>1559141225762</td><td class="numi">38</td></tr><tr class="passedodd"><td><a href="#m2"><b>doesUserExistFindsAUser</b>  </a></td><td class="numi">1</td><td>1559141225812</td><td class="numi">3</td></tr><tr class="passedodd"><td><a href="#m3"><b>doesUserExistIsPassedANullUsernameAndReturnsTrue</b>  </a></td><td class="numi">1</td><td>1559141225821</td><td class="numi">3</td></tr><tr class="passedodd"><td><a href="#m4"><b>serviceLayerCreatesNewUserReturnsNewUser</b>  </a></td><td class="numi">1</td><td>1559141225832</td><td class="numi">17</td></tr><tr class="passedodd"><td><a href="#m5"><b>serviceLayerDeletesUserReturnsBoolean</b>  </a></td><td class="numi">1</td><td>1559141225854</td><td class="numi">3</td></tr><tr class="passedodd"><td><a href="#m6"><b>serviceLayerFailsToCreateUserBecauseUserIsNull</b>  </a></td><td class="numi">1</td><td>1559141225863</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m7"><b>serviceLayerFailsToDeleteUserBecauseUsernameIsNull</b>  </a></td><td class="numi">1</td><td>1559141225871</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m8"><b>serviceLayerFailsToUpdateUserBecauseUserDoesntExist</b>  </a></td><td class="numi">1</td><td>1559141225883</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m9"><b>serviceLayerFailsToUpdateUserBecauseUserIsNull</b>  </a></td><td class="numi">1</td><td>1559141225890</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m10"><b>serviceLayerUpdatesUser</b>  </a></td><td class="numi">1</td><td>1559141225906</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m11"><b>testGetAllUsers</b>  </a></td><td class="numi">1</td><td>1559141225915</td><td class="numi">3</td></tr><tr class="passedodd"><td><a href="#m12"><b>userFailsToFindUserByUsernameBecauseUserDoesntExist</b>  </a></td><td class="numi">1</td><td>1559141225924</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m13"><b>userFailsToFindUserByUsernameBecauseUsernameIsNull</b>  </a></td><td class="numi">1</td><td>1559141225932</td><td class="numi">3</td></tr><tr class="passedodd"><td><a href="#m14"><b>userFailsToLoginBecauseLoginObjectIsNull</b>  </a></td><td class="numi">1</td><td>1559141225942</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m15"><b>userFailsToLoginDueToInvalidCredentials</b>  </a></td><td class="numi">1</td><td>1559141225948</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m16"><b>userFindsUserByUsername</b>  </a></td><td class="numi">1</td><td>1559141225955</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m17"><b>userNotCreatedBecauseItAlreadyExists</b>  </a></td><td class="numi">1</td><td>1559141225963</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m18"><b>userSuccessfullyLogsIn</b>  </a></td><td class="numi">1</td><td>1559141225971</td><td class="numi">3</td></tr>
+<tr class="passedodd"><td rowspan="5">videosharebe.SeleniumTest</td><td><a href="#m1"><b>login</b>  </a></td><td class="numi">1</td><td>1559763847943</td><td class="numi">1279</td></tr><tr class="passedodd"><td><a href="#m2"><b>newUserShowsUpInListOfUsers</b>  </a></td><td class="numi">1</td><td>1559763849224</td><td class="numi">1138</td></tr><tr class="passedodd"><td><a href="#m3"><b>userCanBeDeleted</b>  </a></td><td class="numi">1</td><td>1559763852148</td><td class="numi">1149</td></tr><tr class="passedodd"><td><a href="#m4"><b>userRegistersAsNewUser</b>  </a></td><td class="numi">1</td><td>1559763846814</td><td class="numi">1118</td></tr><tr class="passedodd"><td><a href="#m5"><b>userUpdatesUserInfoSuccessfully</b>  </a></td><td class="numi">1</td><td>1559763850363</td><td class="numi">1783</td></tr>
 </table>
 <h1>Default test</h1>
-<h2 id="m1">videosharebe.UserServiceTest:doesUserExistIsPassedANullUsernameAndReturnsTrue</h2>
+<h2 id="m1">videosharebe.SeleniumTest:login</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m2">videosharebe.UserServiceTest:userFindsUserByUsername</h2>
+<h2 id="m2">videosharebe.SeleniumTest:userRegistersAsNewUser</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m3">videosharebe.UserServiceTest:userNotCreatedBecauseItAlreadyExists</h2>
+<h2 id="m3">videosharebe.SeleniumTest:newUserShowsUpInListOfUsers</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m4">videosharebe.UserServiceTest:serviceLayerFailsToCreateUserBecauseUserIsNull</h2>
+<h2 id="m4">videosharebe.SeleniumTest:userCanBeDeleted</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m5">videosharebe.UserServiceTest:serviceLayerFailsToUpdateUserBecauseUserDoesntExist</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m6">videosharebe.UserServiceTest:userFailsToFindUserByUsernameBecauseUsernameIsNull</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m7">videosharebe.UserServiceTest:userFailsToLoginDueToInvalidCredentials</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m8">videosharebe.UserServiceTest:serviceLayerFailsToDeleteUserBecauseUsernameIsNull</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m9">videosharebe.UserServiceTest:testGetAllUsers</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m10">videosharebe.UserServiceTest:userFailsToFindUserByUsernameBecauseUserDoesntExist</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m11">videosharebe.UserServiceTest:serviceLayerFailsToUpdateUserBecauseUserIsNull</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m12">videosharebe.UserServiceTest:serviceLayerUpdatesUser</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m13">videosharebe.UserServiceTest:userFailsToLoginBecauseLoginObjectIsNull</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m14">videosharebe.UserServiceTest:doesUserExistDoesntFindAUser</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m15">videosharebe.UserServiceTest:serviceLayerCreatesNewUserReturnsNewUser</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m16">videosharebe.UserServiceTest:userSuccessfullyLogsIn</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m17">videosharebe.UserServiceTest:serviceLayerDeletesUserReturnsBoolean</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m18">videosharebe.UserServiceTest:doesUserExistFindsAUser</h2>
+<h2 id="m5">videosharebe.SeleniumTest:userUpdatesUserInfoSuccessfully</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
 </body></html>

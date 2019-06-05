@@ -53,6 +53,39 @@ public class AppUser {
 		this.password = user.getPassword();
 	}
 	
+	
+	public AppUser convert(User user)
+	{	
+		//should I instantiate a new AppUser appUser and assign the 
+		//values to the appUser variable and then return that variable 
+		//or is this fine?
+		if(user.getId() != null)
+		{
+			this.id = user.getId();
+		}
+		if(user.getEmail() != null)
+		{
+			this.email = user.getEmail();
+		}
+		if(user.getAddress() != null)
+		{
+			this.address = user.getAddress();
+		}
+		if(user.getAge() != null)
+		{
+			this.age = user.getAge();
+		}
+		if(user.getPhoneNumber() != null)
+		{
+			this.phoneNumber = user.getPhoneNumber();
+		}
+		if(user.getPassword() != null)
+		{
+			this.password = user.getPassword();
+		}
+		return(this);
+	}
+	
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", id=" + id + ", email=" + email + ", address=" + address

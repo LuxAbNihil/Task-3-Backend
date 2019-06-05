@@ -7,7 +7,7 @@ public class VideoSiteIntitializer extends AbstractAnnotationConfigDispatcherSer
 	@Override
 	protected Class<?>[] getRootConfigClasses()
 	{
-		return new Class[] {HibernateConfiguration.class};
+		return new Class[] {MvcConfiguration.class};
 	}
 	
 	@Override

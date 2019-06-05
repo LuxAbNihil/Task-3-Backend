@@ -2,13 +2,13 @@ package org.demartino.videosharingsite.service;
 
 import java.util.List;
 
-import org.demartino.videosharingsite.entity.UploadedVideo;
+import org.demartino.videosharingsite.remote.UploadRemote;
 import org.demartino.videosharingsite.view.Upload;
 
 public interface UploadService {
-	Upload createVideo(Upload upload, String username);
+	UploadRemote createVideo(UploadRemote uploadRemote, String username);
 	boolean deleteVideoById(Long id);
-	Upload findVideoByTitle(String title);
-	Upload updateVideo(Upload upload);
+	UploadRemote findVideoByTitle(String title);
+	UploadRemote updateVideo(UploadRemote uploadRemote);
 	List<Upload> getAllVideosForUser(String username);
 }

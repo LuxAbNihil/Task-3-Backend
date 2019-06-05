@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.demartino.videosharingsite.remote.UploadRemote;
 import org.demartino.videosharingsite.view.Upload;
 
 @Entity
@@ -33,10 +34,11 @@ public class UploadedVideo {
 	
 	public UploadedVideo() {}
 
-	public UploadedVideo(Upload upload)
+	public UploadedVideo(UploadRemote uploadRemote)
 	{
-		this.title = upload.getTitle();
-		this.path = null;	
+		this.title = uploadRemote.getTitle();
+		this.path = uploadRemote.getPath();	
+		this.id = uploadRemote.getId();
 	}
 
 	public String getTitle() {
