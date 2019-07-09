@@ -17,7 +17,7 @@ import org.demartino.videosharingsite.view.Upload;
 //Class Name Should reflect TableName
 //best practice is to have underscore between words
 public class UploadedVideo {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="upload_id")
@@ -40,7 +40,6 @@ public class UploadedVideo {
 		this.path = uploadRemote.getPath();	
 		this.id = uploadRemote.getId();
 	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -59,6 +58,22 @@ public class UploadedVideo {
 	public void setId(long id) {
 		this.id = id;
 	} 
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public AppUser getUserEntity() {
+		return userEntity;
+	}
+
+	public void setUserEntity(AppUser userEntity) {
+		this.userEntity = userEntity;
+	}
 	
 	
 }

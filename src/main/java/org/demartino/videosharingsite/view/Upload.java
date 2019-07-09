@@ -1,13 +1,11 @@
 package org.demartino.videosharingsite.view;
 
 import org.demartino.videosharingsite.entity.UploadedVideo;
-import org.springframework.web.multipart.MultipartFile;
 
 public class Upload  {
 	private Long id;
 	private String title;
-	private MultipartFile video;
-	
+	private String path;
 	
 	public Upload() {};
 	
@@ -15,6 +13,7 @@ public class Upload  {
 	{
 		this.title = uploadedVideo.getTitle();
 		this.id = uploadedVideo.getId();
+		this.path = uploadedVideo.getPath();
 	}
 	
 	public Long getId() {
@@ -29,18 +28,20 @@ public class Upload  {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public MultipartFile getVideo() {
-		return video;
+	public String getPath() {
+		return path;
 	}
-	public void setVideo(MultipartFile video) {
-		this.video = video;
+	public void setPath(String path) {
+		this.path = path;
 	}
+	
 
 	@Override
 	public String toString() {
-		return "Upload [id=" + id + ", title=" + title + ", video=" + video + "]";
+		return "Upload [id=" + id + ", title=" + title + "]";
 	}
+
 	
-	
+
 }
 

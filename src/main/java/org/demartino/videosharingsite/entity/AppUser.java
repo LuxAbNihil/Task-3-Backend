@@ -12,9 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.demartino.videosharingsite.view.User;
-import org.springframework.stereotype.Repository;
 
-@Repository
+
 @Entity
 @Table(name="APPUSER")
 public class AppUser {

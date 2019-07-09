@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,25 +21,21 @@ public class VideoDaoImpl implements VideoDao{
 	public UploadedVideo createVideo(UploadedVideo upload) {
 		Session session = sessionFactory.getCurrentSession();
 		session.persist(upload);
-		UploadedVideo returnedUploadEntity = findVideoByTitle(upload.getTitle());
-		return returnedUploadEntity;	
+		return upload;	
+	}
+	
+	public UploadedVideo getVideoByTitle(String title, String username) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(UploadedVideo.class);
+		criteria.add(Restrictions.eq("title", title));
+		criteria.add(Restrictions.eq("username", username));
+		return (UploadedVideo)criteria.uniqueResult();
 	}
 	
 	public boolean deleteVideoById(Long id) {
 		Query query = sessionFactory.getCurrentSession().createQuery("delete upload where id = :id");
 		query.setParameter("id", id);
 		int result = query.executeUpdate();
-		if (result == 1)
-		{
-			return true;
-		}
-		return false;
-	}
-
-	public UploadedVideo findVideoByTitle(String title) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(UploadedVideo.class);
-		criteria.add(Restrictions.eq("title", title));
-		return(UploadedVideo) criteria.uniqueResult();
+		return (result == 1);
 	}
 
 	public UploadedVideo updateVideo(UploadedVideo upload) {
@@ -48,12 +45,16 @@ public class VideoDaoImpl implements VideoDao{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<UploadedVideo> getAllVideosForUser(String username)
-	{
+	public List<UploadedVideo> getAllVideosForUser(String username) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(UploadedVideo.class);
 		criteria.add(Restrictions.eq("username", username));
 		return criteria.list();
-		
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<UploadedVideo> getVideosByTitle(String title) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(UploadedVideo.class);
+		criteria.add(Restrictions.like("title", title, MatchMode.ANYWHERE).ignoreCase());
+		return criteria.list();
+	}
 }

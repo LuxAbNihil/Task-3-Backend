@@ -2,36 +2,36 @@
 <testng-results skipped="0" failed="0" total="5" passed="5">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="10052" started-at="2019-06-05T19:44:03Z" finished-at="2019-06-05T19:44:13Z">
+  <suite name="Default suite" duration-ms="12698" started-at="2019-06-06T20:14:38Z" finished-at="2019-06-06T20:14:51Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="10052" started-at="2019-06-05T19:44:03Z" finished-at="2019-06-05T19:44:13Z">
+    <test name="Default test" duration-ms="12698" started-at="2019-06-06T20:14:38Z" finished-at="2019-06-06T20:14:51Z">
       <class name="videosharebe.SeleniumTest">
-        <test-method status="PASS" signature="initializer()[pri:0, instance:videosharebe.SeleniumTest@1d057a39]" name="initializer" is-config="true" duration-ms="3382" started-at="2019-06-05T14:44:03Z" finished-at="2019-06-05T14:44:06Z">
+        <test-method status="PASS" signature="initializer()[pri:0, instance:videosharebe.SeleniumTest@d8355a8]" name="initializer" is-config="true" duration-ms="4252" started-at="2019-06-06T15:14:38Z" finished-at="2019-06-06T15:14:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializer -->
-        <test-method status="PASS" signature="userRegistersAsNewUser()[pri:0, instance:videosharebe.SeleniumTest@1d057a39]" name="userRegistersAsNewUser" duration-ms="1118" started-at="2019-06-05T14:44:06Z" finished-at="2019-06-05T14:44:07Z">
+        <test-method status="PASS" signature="userRegistersAsNewUser()[pri:0, instance:videosharebe.SeleniumTest@d8355a8]" name="userRegistersAsNewUser" duration-ms="3205" started-at="2019-06-06T15:14:42Z" finished-at="2019-06-06T15:14:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- userRegistersAsNewUser -->
-        <test-method status="PASS" signature="login()[pri:0, instance:videosharebe.SeleniumTest@1d057a39]" name="login" duration-ms="1279" started-at="2019-06-05T14:44:07Z" finished-at="2019-06-05T14:44:09Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:videosharebe.SeleniumTest@d8355a8]" name="login" duration-ms="1346" started-at="2019-06-06T15:14:46Z" finished-at="2019-06-06T15:14:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="newUserShowsUpInListOfUsers()[pri:0, instance:videosharebe.SeleniumTest@1d057a39]" name="newUserShowsUpInListOfUsers" duration-ms="1138" started-at="2019-06-05T14:44:09Z" finished-at="2019-06-05T14:44:10Z">
+        <test-method status="PASS" signature="newUserShowsUpInListOfUsers()[pri:0, instance:videosharebe.SeleniumTest@d8355a8]" name="newUserShowsUpInListOfUsers" duration-ms="1110" started-at="2019-06-06T15:14:47Z" finished-at="2019-06-06T15:14:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- newUserShowsUpInListOfUsers -->
-        <test-method status="PASS" signature="userUpdatesUserInfoSuccessfully()[pri:0, instance:videosharebe.SeleniumTest@1d057a39]" name="userUpdatesUserInfoSuccessfully" duration-ms="1783" started-at="2019-06-05T14:44:10Z" finished-at="2019-06-05T14:44:12Z">
+        <test-method status="PASS" signature="userUpdatesUserInfoSuccessfully()[pri:0, instance:videosharebe.SeleniumTest@d8355a8]" name="userUpdatesUserInfoSuccessfully" duration-ms="1671" started-at="2019-06-06T15:14:48Z" finished-at="2019-06-06T15:14:50Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- userUpdatesUserInfoSuccessfully -->
-        <test-method status="PASS" signature="userCanBeDeleted()[pri:0, instance:videosharebe.SeleniumTest@1d057a39]" name="userCanBeDeleted" duration-ms="1149" started-at="2019-06-05T14:44:12Z" finished-at="2019-06-05T14:44:13Z">
+        <test-method status="PASS" signature="userIsDeleted()[pri:0, instance:videosharebe.SeleniumTest@d8355a8]" name="userIsDeleted" duration-ms="741" started-at="2019-06-06T15:14:50Z" finished-at="2019-06-06T15:14:50Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- userCanBeDeleted -->
-        <test-method status="PASS" signature="cleanUp()[pri:0, instance:videosharebe.SeleniumTest@1d057a39]" name="cleanUp" is-config="true" duration-ms="168" started-at="2019-06-05T14:44:13Z" finished-at="2019-06-05T14:44:13Z">
+        </test-method> <!-- userIsDeleted -->
+        <test-method status="PASS" signature="cleanUp()[pri:0, instance:videosharebe.SeleniumTest@d8355a8]" name="cleanUp" is-config="true" duration-ms="354" started-at="2019-06-06T15:14:50Z" finished-at="2019-06-06T15:14:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanUp -->

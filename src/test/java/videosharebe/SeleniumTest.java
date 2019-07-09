@@ -94,20 +94,15 @@ public class SeleniumTest {
 		editUserButton.click(); //necessary because it takes two clicks to display update fields
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("edit-submit")));
 		WebElement editPassword = driver.findElement(By.id("editPassword"));
-		editPassword.clear();
-		editPassword.sendKeys("password");
 		WebElement editEmail = driver.findElement(By.id("editEmail"));
-		editEmail.clear();
-		editEmail.sendKeys("user@email.com");
 		WebElement editAddress = driver.findElement(By.id("editAddress"));
-		editAddress.clear();
-		editAddress.sendKeys("123 User Lane");
 		WebElement editPhoneNumber = driver.findElement(By.id("editPhoneNumber"));
-		editPhoneNumber.clear();
-		editPhoneNumber.sendKeys("0001110000");
 		WebElement editAge = driver.findElement(By.id("editAge"));
-		editAge.clear();
-		editAge.sendKeys("34");
+		enterDataIntoForm(editPassword, "password");
+		enterDataIntoForm(editEmail, "user@email.com");
+		enterDataIntoForm(editAddress, "123 User Lane");
+		enterDataIntoForm(editPhoneNumber, "0001110000");
+		enterDataIntoForm(editAge, "34");
 		driver.findElement(By.id("edit-submit")).click();
 		wait.until(ExpectedConditions.textToBe(By.id("UserAddress-0"), "123 User Lane"));
 		String phoneNumber = driver.findElement(By.xpath("//*[@id=\"UserPhoneNumber-0\"]")).getText();
@@ -115,18 +110,17 @@ public class SeleniumTest {
 	}
 	
 	@Test(priority=4)
-	public void userCanBeDeleted() throws InterruptedException {
+	public void userIsDeleted() {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("DeleteUser-0")));
 		driver.findElement(By.id("DeleteUser-0")).click();
-		try {
-			driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Thread.sleep(1000);
+		wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(By.id("UserAddress-0"), "123 User Lane")));
 		String username = driver.findElement(By.id("UserUsername-0")).getText();
 		System.out.println(username);
 		Assert.assertNotEquals(username, "Username");
+	}
+	
+	public void enterDataIntoForm(WebElement element, String dataToBeEntered) {
+		element.clear(); //Make this pass a string and extract web element in helper function
+		element.sendKeys(dataToBeEntered);
 	}
 }

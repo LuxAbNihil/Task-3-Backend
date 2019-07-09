@@ -1,0 +1,219 @@
+<html>
+<head>
+<title>TestNG:  UserServiceTest</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>UserServiceTest</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>28/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Thu Jun 06 15:14:11 CDT 2019</td>
+</tr>
+<tr><td>Total time:</td><td>1 seconds (1977 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.nullIsPassedToDeleteFunction()'><b>nullIsPassedToDeleteFunction</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.nullIsPassedToUpdate()'><b>nullIsPassedToUpdate</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.nullPassedToFindVideoById()'><b>nullPassedToFindVideoById</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.serviceLayerCreatesNewUserReturnsNewUser()'><b>serviceLayerCreatesNewUserReturnsNewUser</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.serviceLayerDeletesUserReturnsBoolean()'><b>serviceLayerDeletesUserReturnsBoolean</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.serviceLayerFailsToCreateUserBecauseUserIsNull()'><b>serviceLayerFailsToCreateUserBecauseUserIsNull</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.serviceLayerFailsToDeleteUserBecauseUsernameIsNull()'><b>serviceLayerFailsToDeleteUserBecauseUsernameIsNull</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.serviceLayerFailsToUpdateUserBecauseUserDoesntExist()'><b>serviceLayerFailsToUpdateUserBecauseUserDoesntExist</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.serviceLayerFailsToUpdateUserBecauseUserIsNull()'><b>serviceLayerFailsToUpdateUserBecauseUserIsNull</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.serviceLayerUpdatesUser()'><b>serviceLayerUpdatesUser</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.testGetAllUsers()'><b>testGetAllUsers</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.userCantCreateNewVideoBecuaseOneAlreadyExistsWithSameTitle()'><b>userCantCreateNewVideoBecuaseOneAlreadyExistsWithSameTitle</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.userCantCreateNewVideoBecuaseUploadIsNull()'><b>userCantCreateNewVideoBecuaseUploadIsNull</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.userCantFindVideoByTitle()'><b>userCantFindVideoByTitle</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.userCantUpdateVideoBecauseItDoesntExist()'><b>userCantUpdateVideoBecauseItDoesntExist</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.userCreatesNewVideo()'><b>userCreatesNewVideo</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.userDeletesVideoById()'><b>userDeletesVideoById</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.userFailsToDeleteVideoById()'><b>userFailsToDeleteVideoById</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.userFailsToFindUserByUsernameBecauseUserDoesntExist()'><b>userFailsToFindUserByUsernameBecauseUserDoesntExist</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.userFailsToFindUserByUsernameBecauseUsernameIsNull()'><b>userFailsToFindUserByUsernameBecauseUsernameIsNull</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.LoginServiceTest.userFailsToLoginBecauseLoginObjectIsNull()'><b>userFailsToLoginBecauseLoginObjectIsNull</b><br>Test class: videosharebe.LoginServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.LoginServiceTest@7c853486</td></tr>
+<tr>
+<td title='videosharebe.LoginServiceTest.userFailsToLoginDueToInvalidCredentials()'><b>userFailsToLoginDueToInvalidCredentials</b><br>Test class: videosharebe.LoginServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.LoginServiceTest@7c853486</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.userFindsUserByUsername()'><b>userFindsUserByUsername</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.userFindsVideoByTitle()'><b>userFindsVideoByTitle</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.userGetsAllVideosForGivenUsername()'><b>userGetsAllVideosForGivenUsername</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+<tr>
+<td title='videosharebe.UserServiceTest.userNotCreatedBecauseItAlreadyExists()'><b>userNotCreatedBecauseItAlreadyExists</b><br>Test class: videosharebe.UserServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UserServiceTest@151db587</td></tr>
+<tr>
+<td title='videosharebe.LoginServiceTest.userSuccessfullyLogsIn()'><b>userSuccessfullyLogsIn</b><br>Test class: videosharebe.LoginServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.LoginServiceTest@7c853486</td></tr>
+<tr>
+<td title='videosharebe.UploadServiceTest.userUpdatesVideoSuccessfully()'><b>userUpdatesVideoSuccessfully</b><br>Test class: videosharebe.UploadServiceTest</td>
+<td></td>
+<td>0</td>
+<td>videosharebe.UploadServiceTest@174e1b69</td></tr>
+</table><p>
+</body>
+</html>

@@ -38,7 +38,7 @@ public class LoginServiceTest {
 	@Mock
 	private UserServiceImpl userServiceImplMock;
 	
-	@Mock
+	@Mock //mock the interface not the implementation (shouldn't need lines 47-51.)
 	private UploadServiceImpl uploadServiceImplMock;
 
 	@InjectMocks

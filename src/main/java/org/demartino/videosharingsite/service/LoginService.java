@@ -4,5 +4,5 @@ import org.demartino.videosharingsite.view.Login;
 import org.demartino.videosharingsite.view.UserAndVideoListContainer;
 
 public interface LoginService {
-	UserAndVideoListContainer login(Login login);
+	boolean login(Login login);
 }

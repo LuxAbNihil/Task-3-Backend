@@ -34,11 +34,11 @@ public class LoginServiceImpl implements LoginService {
 	 * @return Returns a UserAndVideoListContainer with the list of the user's videos and all users. 
 	 * 	If the login is not valid it returns an UserAndVideoListContainer object containing empty lists.
 	 */
-	public UserAndVideoListContainer login(Login login) 
+	public boolean login(Login login) 
 	{
 		if(login == null)
 		{
-			return null;
+			return false;
 		}
 		UserAndVideoListContainer userAndVideoListContainer = new UserAndVideoListContainer();
 		List<User> users = new ArrayList<User>();
@@ -46,14 +46,8 @@ public class LoginServiceImpl implements LoginService {
 		AppUser appUser = userDao.isValidLogin(login);
 		if(appUser == null) 
 		{
-			userAndVideoListContainer.setUsers(users);
-			userAndVideoListContainer.setVideos(videos);
-			return userAndVideoListContainer;
+			return false;
 		}
-		users = userService.getAllUsers();
-		videos = uploadService.getAllVideosForUser(login.getUsername());
-		userAndVideoListContainer.setUsers(users);
-		userAndVideoListContainer.setVideos(videos);
-		return userAndVideoListContainer; 
+		return true; 
 	}	
 }
