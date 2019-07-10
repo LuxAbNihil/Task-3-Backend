@@ -5,8 +5,6 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.demartino.videosharingsite.controller.Controller;
 import org.demartino.videosharingsite.jwt.JwtOperations;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -99,6 +99,8 @@ public class UploadServiceImpl implements UploadService{
 		return upload;
 	}
 	
+	//All methods below here are to be moved into VideoServiceImpl
+	
 	public boolean deleteVideoById(Long id) {
 		if(id == null)
 		{

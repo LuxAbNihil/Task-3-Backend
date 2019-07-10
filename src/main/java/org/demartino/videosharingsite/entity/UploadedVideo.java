@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.demartino.videosharingsite.remote.UploadRemote;
-import org.demartino.videosharingsite.view.Upload;
 
 @Entity
 @Table(name="UPLOADEDVIDEO") 

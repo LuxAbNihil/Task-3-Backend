@@ -39,7 +39,8 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry iRegistry) {
     	iRegistry.addInterceptor(authenticationInterceptor)
-    		.excludePathPatterns("/user/login/", "/user/getUserAndVideoListContainer/**");
+    		.excludePathPatterns("/user/login/", "/user/getUserAndVideoListContainer/**", 
+    				"/video/**");
     }
     
     @Bean

@@ -1,6 +1,5 @@
 package org.demartino.videosharingsite.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.demartino.videosharingsite.remote.UploadRemote;
 import org.demartino.videosharingsite.service.UploadService;
-import org.demartino.videosharingsite.service.UploadServiceImpl;
 import org.demartino.videosharingsite.view.Upload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,7 +32,7 @@ public class UploadController {
 	@Autowired
 	private UploadService uploadService;
 	
-	private final static Logger logger = LogManager.getLogger(Controller.class);
+	private final static Logger logger = LogManager.getLogger(UploadController.class);
 	
 	
 	/**

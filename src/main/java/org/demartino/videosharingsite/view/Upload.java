@@ -6,6 +6,7 @@ public class Upload  {
 	private Long id;
 	private String title;
 	private String path;
+	private String username;
 	
 	public Upload() {};
 	
@@ -14,6 +15,7 @@ public class Upload  {
 		this.title = uploadedVideo.getTitle();
 		this.id = uploadedVideo.getId();
 		this.path = uploadedVideo.getPath();
+		this.username = uploadedVideo.getUsername();
 	}
 	
 	public Long getId() {
@@ -34,7 +36,13 @@ public class Upload  {
 	public void setPath(String path) {
 		this.path = path;
 	}
-	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	@Override
 	public String toString() {
