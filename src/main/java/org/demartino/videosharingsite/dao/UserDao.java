@@ -3,7 +3,7 @@ package org.demartino.videosharingsite.dao;
 import java.util.List;
 
 import org.demartino.videosharingsite.entity.AppUser;
-import org.demartino.videosharingsite.view.Login;
+import org.demartino.videosharingsite.entity.PasswordResetToken;
 
 public interface UserDao {
 	AppUser createUser(AppUser userEntity);
@@ -11,5 +11,7 @@ public interface UserDao {
 	AppUser findUserByUsername(String username);
 	AppUser updateUser(AppUser user);
 	List<AppUser> getAllUsers();
-	AppUser isValidLogin(Login login);
+	String getPasswordByUsername(String username);
+	AppUser getUserByEmail(String email);
+	PasswordResetToken createPasswordResetToken (PasswordResetToken passwordResetToken);
 }

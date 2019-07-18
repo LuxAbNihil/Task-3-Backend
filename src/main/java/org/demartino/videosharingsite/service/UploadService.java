@@ -3,6 +3,7 @@ package org.demartino.videosharingsite.service;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+import org.demartino.videosharingsite.entity.PasswordResetToken;
 import org.demartino.videosharingsite.remote.UploadRemote;
 import org.demartino.videosharingsite.view.Upload;
 import org.springframework.web.multipart.MultipartHttpServletRequest;

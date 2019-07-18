@@ -3,6 +3,7 @@ package org.demartino.videosharingsite.dao;
 import java.util.List;
 
 import org.demartino.videosharingsite.entity.AppUser;
+import org.demartino.videosharingsite.entity.PasswordResetToken;
 import org.demartino.videosharingsite.view.Login;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -51,15 +52,25 @@ public class UserDaoImpl implements UserDao {
 		List<AppUser> users = criteria.list(); 
 		return users;
 	}
-	
-	
-	public AppUser isValidLogin(Login login)
-	{
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AppUser.class);
-		criteria.add(Restrictions.eq("username", login.getUsername()));
-		criteria.add(Restrictions.eq("password", login.getPassword()));
-		AppUser appUser = (AppUser) criteria.uniqueResult();
-		return appUser;
-	}
 
+	public String getPasswordByUsername(String username) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AppUser.class);
+		criteria.add(Restrictions.eq("username", username));
+		AppUser appUser = (AppUser) criteria.uniqueResult();
+		String hashedPassword = appUser.getPassword();
+		return hashedPassword;
+	}
+	
+	public AppUser getUserByEmail(String email) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AppUser.class);
+		criteria.add(Restrictions.eq("email", email));
+		AppUser appUser = (AppUser) criteria.uniqueResult();
+		return appUser; 
+	}
+	
+	public PasswordResetToken createPasswordResetToken(PasswordResetToken passwordResetToken) {
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(passwordResetToken);
+		return passwordResetToken;
+	}
 }

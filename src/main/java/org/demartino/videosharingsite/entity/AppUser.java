@@ -2,13 +2,16 @@ package org.demartino.videosharingsite.entity;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.demartino.videosharingsite.view.User;
@@ -25,7 +28,7 @@ public class AppUser {
 	@Column(name="username", nullable=false)
 	private String username;
 	@Column(name="password", nullable=false)
-	private String password;  
+	private String password;
 	@Column(name="email")
 	private String email;
 	@Column(name="address")
@@ -34,8 +37,7 @@ public class AppUser {
 	private String phoneNumber;
 	@Column(name="age")
 	private Short age;
-	
-	@OneToMany(mappedBy="userEntity", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="userEntity", cascade = CascadeType.REMOVE, fetch=FetchType.LAZY, orphanRemoval = true)
 	private Set<UploadedVideo> videos; //TODO use two calls instead of join
 	
 	public AppUser() {};
@@ -49,7 +51,7 @@ public class AppUser {
 		this.address = user.getAddress();
 		this.phoneNumber = user.getPhoneNumber();
 		this.age = user.getAge();
-		this.password = user.getPassword();
+		this.password = user.getPassword();;
 	}
 	
 	
@@ -131,7 +133,8 @@ public class AppUser {
 	}
 	public void setAge(Short age) {
 		this.age = age;
-	} 
+	}
+	
 	
 	
 }

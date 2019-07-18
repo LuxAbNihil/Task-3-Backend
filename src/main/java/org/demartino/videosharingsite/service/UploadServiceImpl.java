@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.demartino.videosharingsite.dao.UserDao;
 import org.demartino.videosharingsite.dao.VideoDao;
 import org.demartino.videosharingsite.entity.AppUser;
@@ -34,6 +36,8 @@ public class UploadServiceImpl implements UploadService{
 	@Value("${upload_directory}")
 	private String fileDirectory;
 	
+	
+	private static final Logger logger = LogManager.getLogger(UploadServiceImpl.class);
 	/**
 	 * Creates a video entry in the database and stores the uploaded video
 	 * onto a directory in the file system. The directory structure is 
@@ -101,14 +105,7 @@ public class UploadServiceImpl implements UploadService{
 	
 	//All methods below here are to be moved into VideoServiceImpl
 	
-	public boolean deleteVideoById(Long id) {
-		if(id == null)
-		{
-			return false;
-		}
-		boolean success = videoDao.deleteVideoById(id);
-		return success;
-	}
+	
 	/**
 	 * Gets a list of videos with titles matching the search term or 
 	 * 	similar to the search term. 
@@ -121,6 +118,7 @@ public class UploadServiceImpl implements UploadService{
 			return null;
 		}
 		List<UploadedVideo> returnedUploadedVideos = videoDao.getVideosByTitle(title);
+		logger.debug("In getVideoByTitle Method: ", returnedUploadedVideos);
 		if (returnedUploadedVideos.size() == 0) {
 			return null;
 		}
@@ -130,6 +128,15 @@ public class UploadServiceImpl implements UploadService{
 			uploads.add(upload);
 		}
 		return uploads;
+	}
+	
+	public boolean deleteVideoById(Long id) {
+		if(id == null)
+		{
+			return false;
+		}
+		boolean success = videoDao.deleteVideoById(id);
+		return success;
 	}
 	
 	public UploadRemote updateVideo(UploadRemote uploadRemote) {

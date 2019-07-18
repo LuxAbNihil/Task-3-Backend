@@ -11,7 +11,8 @@ public class User {
 	private String phoneNumber;
 	private Short age;
 	private String password;
-	
+	private String confirmPassword;
+
 	public User() {};
 	
 	public User(AppUser userEntity) 
@@ -72,7 +73,11 @@ public class User {
 	}
 	public void setAge(Short age) {
 		this.age = age;
-	} 
-	
-	
+	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.demartino.videosharingsite.dao.UserDao;
 import org.demartino.videosharingsite.entity.AppUser;
+import org.demartino.videosharingsite.password.Password;
 import org.demartino.videosharingsite.view.Login;
 import org.demartino.videosharingsite.view.Upload;
 import org.demartino.videosharingsite.view.UserAndVideoListContainer;
@@ -21,18 +22,10 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private UserDao userDao;
 	
-	@Autowired
-	private UserService userService;
-	
-	@Autowired
-	private UploadService uploadService;
-	
-	
 	/**
 	 * Determines if the login attempt is valid
 	 * @param Login : the login object containing the user's username and password
-	 * @return Returns a UserAndVideoListContainer with the list of the user's videos and all users. 
-	 * 	If the login is not valid it returns an UserAndVideoListContainer object containing empty lists.
+	 * @return Returns a boolean, true if valid username and password, false otherwise. 
 	 */
 	public boolean login(Login login) 
 	{
@@ -40,11 +33,9 @@ public class LoginServiceImpl implements LoginService {
 		{
 			return false;
 		}
-		UserAndVideoListContainer userAndVideoListContainer = new UserAndVideoListContainer();
-		List<User> users = new ArrayList<User>();
-		List<Upload> videos = new ArrayList<Upload>();
-		AppUser appUser = userDao.isValidLogin(login);
-		if(appUser == null) 
+		boolean isPasswordValid = Password.validate(login.getPassword(), userDao.getPasswordByUsername(login.getUsername()));
+		AppUser appUser = userDao.findUserByUsername(login.getUsername());
+		if(null == appUser || !isPasswordValid) 
 		{
 			return false;
 		}

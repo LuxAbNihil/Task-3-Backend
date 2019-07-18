@@ -76,6 +76,7 @@ public class UploadController {
 	public ResponseEntity<List<Upload>> getSearchResultsByTitle(@PathVariable String search) {
 		logger.debug("In getSearchResultsByTitle");
 		List<Upload> videos = uploadService.getVideosByTitle(search);
+		logger.debug("Upload List To Be Returned: ", videos);
 		return new ResponseEntity<List<Upload>>(videos, HttpStatus.OK);
 	}
 }

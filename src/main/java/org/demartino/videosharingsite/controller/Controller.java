@@ -2,13 +2,18 @@ package org.demartino.videosharingsite.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.demartino.videosharingsite.entity.PasswordResetToken;
 import org.demartino.videosharingsite.jwt.JwtOperations;
 import org.demartino.videosharingsite.service.LoginService;
 import org.demartino.videosharingsite.service.UploadService;
 import org.demartino.videosharingsite.service.UserService;
+import org.demartino.videosharingsite.view.Email;
 import org.demartino.videosharingsite.view.Login;
 import org.demartino.videosharingsite.view.Upload;
 import org.demartino.videosharingsite.view.User;
@@ -28,7 +33,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-//@CrossOrigin(origins= {"http://localhost:4200"}, methods={RequestMethod.POST, RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.OPTIONS})
+@CrossOrigin(origins= {"http://localhost:4200"}, methods={RequestMethod.POST, RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.OPTIONS})
 @RequestMapping(value="/user/") 
 public class Controller {
 	
@@ -37,9 +42,6 @@ public class Controller {
 	
 	@Autowired
 	private LoginService loginService;
-	
-	@Autowired
-	private UploadService uploadService;
 	
 	@Autowired
 	private JwtOperations jwtOperations;
@@ -116,7 +118,6 @@ public class Controller {
 	public ResponseEntity<String> login(@RequestBody Login login) throws JsonProcessingException {
 		boolean isValidLogon = loginService.login(login);
 		String token;
-		System.out.println("In login Method");
 		ObjectMapper objectMapper = new ObjectMapper();
 		if(isValidLogon) {
 			token = jwtOperations.createJws(login.getUsername());
@@ -169,8 +170,22 @@ public class Controller {
 		return new ResponseEntity<UserAndVideoListContainer>(HttpStatus.OK);	
 	}
 	
-//	@RequestMapping(value="/", method=RequestMethod.OPTIONS) 
-//	public ResponseEntity<Void> optionsMapping() {
-//		return new ResponseEntity<Void>(HttpStatus.OK);
-//	}
+	/**
+	 * Sends an email with a token for resetting a forgotten password
+	 * @param Email: The email of the account to reset the password for
+	 * @return Returns a ResponseEntity<Boolean> true if if the user object is not null false otherwise
+	 */
+	@RequestMapping(value="/resetPassword/", method = RequestMethod.POST)
+	public ResponseEntity<Boolean> resetPassword(HttpServletRequest request, @RequestBody Email email) {
+		String emailString = email.getEmail();
+		User user = userService.getUserByEmail(emailString);
+		if(user == null) {
+			return new ResponseEntity<Boolean>(false, HttpStatus.OK);
+		}
+		String token = UUID.randomUUID().toString();
+		long expirationTime = userService.setExpirationEpochForPasswordResetToken();
+		PasswordResetToken passwordResetToken = userService.createPasswordResetToken(user, token, expirationTime);
+		userService.sendPasswordResetEmail(passwordResetToken, emailString);
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
 }	

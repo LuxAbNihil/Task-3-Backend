@@ -1,16 +1,29 @@
 package org.demartino.videosharingsite.service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.demartino.videosharingsite.dao.UserDao;
 import org.demartino.videosharingsite.entity.AppUser;
+import org.demartino.videosharingsite.entity.PasswordResetToken;
+import org.demartino.videosharingsite.password.Password;
 import org.demartino.videosharingsite.view.Upload;
 import org.demartino.videosharingsite.view.User;
 import org.demartino.videosharingsite.view.UserAndVideoListContainer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +37,18 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UploadService uploadService;
 	
+	@Value("${sender_email}")
+	private String sendingEmail;
+	
+	@Value("${password_reset_link}")
+	private String passwordResetPage;
+	
+	@Value("${email_username")
+	private String username;
+	
+	@Value("${email_password}")
+	private String password;
+	
 	private final static Logger logger = LogManager.getLogger(UserServiceImpl.class);
 	
 	/**
@@ -36,6 +61,8 @@ public class UserServiceImpl implements UserService {
 		{
 			return null;
 		}
+		String hashedPassword = Password.hash(user.getPassword());
+		user.setPassword(hashedPassword);
 		AppUser appUser = new AppUser(user);
 		AppUser returnedAppUser = userDao.createUser(appUser);
 		User returnedUser = new User(returnedAppUser);
@@ -104,4 +131,59 @@ public class UserServiceImpl implements UserService {
 		userAndVideoListContainer.setVideos(uploadService.getAllVideosForUser(username));
 		return userAndVideoListContainer;
 	}
+	
+	public User getUserByEmail(String email) {
+		AppUser appUser = userDao.getUserByEmail(email);
+		User user = new User(appUser);
+		return user;
+	}
+	
+	@Override
+	public PasswordResetToken createPasswordResetToken(User user, String token, long expirationTime) {
+		PasswordResetToken myToken = new PasswordResetToken(user, token, expirationTime);
+		myToken = userDao.createPasswordResetToken(myToken);
+		return myToken;
+	}
+	
+	public long setExpirationEpochForPasswordResetToken() {
+		LocalDateTime now = LocalDateTime.now();
+		ZoneId zoneId = ZoneId.systemDefault();
+		long epoch = now.atZone(zoneId).toEpochSecond();
+		long expirationTime = epoch + (long)(3600 * 24);
+		return expirationTime;
+	}
+
+	public void sendPasswordResetEmail(PasswordResetToken passwordResetToken, String email) {
+		Properties properties = new Properties();
+		properties.put("mail.smtp.host", "smtp.gmail.com");
+		properties.put("mail.smtp.port", "587");
+	    properties.put("mail.smtp.auth", "true");
+	    properties.put("mail.smtp.starttls.enable", "true");
+		Session session = Session.getInstance(properties,
+				new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		String token = passwordResetToken.getToken();
+		
+		try {
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(sendingEmail));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(email));
+			message.setSubject("Password Reset for Videoshare");
+			message.setContent(
+					"<h1>Please Click the Link to Reset Your Password</h1>"
+					+ "<p>Please copy and paste this token into the appropriate field"
+					+ "on the reset password page<p>" 
+					+ "<a href=" + passwordResetPage + ">" + token + "</a>", "text/html"
+					);
+			Transport.send(message);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
 }
