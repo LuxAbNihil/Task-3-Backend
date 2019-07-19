@@ -73,4 +73,21 @@ public class UserDaoImpl implements UserDao {
 		session.persist(passwordResetToken);
 		return passwordResetToken;
 	}
+
+	@Override
+	public PasswordResetToken getPasswordResetTokenByToken(String token) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(PasswordResetToken.class);
+		criteria.add(Restrictions.eq("token", token));
+		PasswordResetToken passwordResetToken = (PasswordResetToken) criteria.uniqueResult();
+		return passwordResetToken;
+	}
+
+	@Override
+	public AppUser getUserByUserId(Long id) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AppUser.class);
+		criteria.add(Restrictions.eq("id", id));
+		AppUser appUser = (AppUser) criteria.uniqueResult();
+		return appUser;
+	}
+	
 }

@@ -14,4 +14,6 @@ public interface UserDao {
 	String getPasswordByUsername(String username);
 	AppUser getUserByEmail(String email);
 	PasswordResetToken createPasswordResetToken (PasswordResetToken passwordResetToken);
+	PasswordResetToken getPasswordResetTokenByToken(String token);
+	AppUser getUserByUserId(Long id);
 }

@@ -1,5 +1,6 @@
 package org.demartino.videosharingsite.service;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import org.demartino.videosharingsite.dao.UserDao;
 import org.demartino.videosharingsite.entity.AppUser;
 import org.demartino.videosharingsite.entity.PasswordResetToken;
 import org.demartino.videosharingsite.password.Password;
+import org.demartino.videosharingsite.view.ResetPassword;
 import org.demartino.videosharingsite.view.Upload;
 import org.demartino.videosharingsite.view.User;
 import org.demartino.videosharingsite.view.UserAndVideoListContainer;
@@ -43,7 +45,7 @@ public class UserServiceImpl implements UserService {
 	@Value("${password_reset_link}")
 	private String passwordResetPage;
 	
-	@Value("${email_username")
+	@Value("${email_username}")
 	private String username;
 	
 	@Value("${email_password}")
@@ -155,10 +157,9 @@ public class UserServiceImpl implements UserService {
 
 	public void sendPasswordResetEmail(PasswordResetToken passwordResetToken, String email) {
 		Properties properties = new Properties();
-		properties.put("mail.smtp.host", "smtp.gmail.com");
-		properties.put("mail.smtp.port", "587");
+		properties.put("mail.smtp.host", "localhost");
+		properties.put("mail.smtp.port", "25");
 	    properties.put("mail.smtp.auth", "true");
-	    properties.put("mail.smtp.starttls.enable", "true");
 		Session session = Session.getInstance(properties,
 				new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
@@ -183,6 +184,23 @@ public class UserServiceImpl implements UserService {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean updatePassword(ResetPassword resetPassword) {
+		String hashedPassword = Password.hash(resetPassword.getPassword());
+		String token = resetPassword.getToken();
+		PasswordResetToken passwordResetToken = userDao.getPasswordResetTokenByToken(token);
+		long expiration = passwordResetToken.getExpirationTime();
+		Instant instant = Instant.now();
+		long currentTimeEpoch = instant.getEpochSecond();
+		if(currentTimeEpoch > expiration) 
+		{
+			return false;
+		}
+		AppUser appUser = userDao.getUserByUserId(passwordResetToken.getAppUser().getId());
+		appUser.setPassword(hashedPassword);
+		appUser = userDao.updateUser(appUser);
+		return true;
 	}
 
 	

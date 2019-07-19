@@ -15,6 +15,7 @@ import org.demartino.videosharingsite.service.UploadService;
 import org.demartino.videosharingsite.service.UserService;
 import org.demartino.videosharingsite.view.Email;
 import org.demartino.videosharingsite.view.Login;
+import org.demartino.videosharingsite.view.ResetPassword;
 import org.demartino.videosharingsite.view.Upload;
 import org.demartino.videosharingsite.view.User;
 import org.demartino.videosharingsite.view.UserAndVideoListContainer;
@@ -175,8 +176,8 @@ public class Controller {
 	 * @param Email: The email of the account to reset the password for
 	 * @return Returns a ResponseEntity<Boolean> true if if the user object is not null false otherwise
 	 */
-	@RequestMapping(value="/resetPassword/", method = RequestMethod.POST)
-	public ResponseEntity<Boolean> resetPassword(HttpServletRequest request, @RequestBody Email email) {
+	@RequestMapping(value="/forgotPassword/", method=RequestMethod.POST)
+	public ResponseEntity<Boolean> forgotPassword(HttpServletRequest request, @RequestBody Email email) {
 		String emailString = email.getEmail();
 		User user = userService.getUserByEmail(emailString);
 		if(user == null) {
@@ -187,5 +188,17 @@ public class Controller {
 		PasswordResetToken passwordResetToken = userService.createPasswordResetToken(user, token, expirationTime);
 		userService.sendPasswordResetEmail(passwordResetToken, emailString);
 		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/resetPassword/", method=RequestMethod.POST)
+	public ResponseEntity<String> resetPassword(@RequestBody ResetPassword resetPassword) {
+		System.out.println("IN RESET PASSWORD");
+		boolean passwordUpdated = userService.updatePassword(resetPassword);
+		if(!passwordUpdated) {
+			return new ResponseEntity<String>("Token has expired, please"
+					+ "go back to the password forgot page and request a"
+					+ "new one", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Password has been reset.", HttpStatus.OK);
 	}
 }	

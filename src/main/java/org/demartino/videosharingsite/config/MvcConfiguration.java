@@ -42,7 +42,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry iRegistry) {
     	iRegistry.addInterceptor(authenticationInterceptor)
     		.excludePathPatterns("/user/login/", "/user/getUserAndVideoListContainer/**", 
-    				"/video/**", "/user/resetPassword/");
+    				"/video/**", "/user/forgotPassword/", "/user/resetPassword/");
     }
     
     @Bean
