@@ -16,7 +16,7 @@
 		<servlet.port>8080</servlet.port>
 		<spring.version>4.3.24.RELEASE</spring.version>
 		<mysql.connector.version>8.0.16</mysql.connector.version>
-		<hibernate.version>5.1.17.Final</hibernate.version>
+		<hibernate.version>5.3.20.Final</hibernate.version>
 		<cglib.version>2.2.2</cglib.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
